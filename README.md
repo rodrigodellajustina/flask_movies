@@ -68,6 +68,8 @@ Exemplo arquivo 📄movies.csv ([Baixar arquivo exemplo](http://databaseit.com.b
 
 📌Executar o projeto
 ```bash
+   #Nativamente 
+
    python app.py
    
 
@@ -80,6 +82,10 @@ Exemplo arquivo 📄movies.csv ([Baixar arquivo exemplo](http://databaseit.com.b
    * Running on http://127.0.0.1:5000
 
    Em caso de sucesso a aplicação estará rodando local na porta 5000
+
+   #Docker
+   docker build -t flask_movies .
+   docker run -d -p 5000:5000 --name flask_movies_container flask_movies:latest
    
 ```
 
