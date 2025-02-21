@@ -66,12 +66,11 @@ Exemplo arquivo 📄movies.csv ([Baixar arquivo exemplo](http://databaseit.com.b
 ![Execução](https://img.shields.io/badge/Run-%F0%9F%9A%94-blue?style=for-the-badge)
 
 
-📌Executar o projeto
+📌Executar o projeto com Python 🐍
 ```bash
    #Nativamente 
 
-   python app.py
-   
+   python app.py   
 
    Após execução do comando acima terá o retorno de host e porta de execução,
    conform exemplo abaixo:
@@ -81,12 +80,46 @@ Exemplo arquivo 📄movies.csv ([Baixar arquivo exemplo](http://databaseit.com.b
    * Debug mode: off
    * Running on http://127.0.0.1:5000
 
-   Em caso de sucesso a aplicação estará rodando local na porta 5000
+   Em caso de sucesso a aplicação estará rodando local na porta 5000   
+   
+```
+📌Executar o projeto com Docker 🐳
+```bash
+   #Docker
+   
+   Para execução com Docker após o clone do projeto, deverá seguir os passsos  
 
    #Docker
+   cd flask_movies 
    docker build -t flask_movies .
    docker run -d -p 5000:5000 --name flask_movies_container flask_movies:latest
    
+   # Baixar um CSV de exemplo 
+   curl -o /tmp/movies.csv http://databaseit.com.br/movies/movies.csv
+   
+   #Copiar o arquivo csv para o container
+   docker cp /tmp/movies.csv flask_movies_container:/app/movies.csv
+   
+   #Restart no Container
+   docker stop flask_movies_container
+   docker start flask_movies_container
+   
+   #Testar a Aplicação
+   curl -i http://127.0.0.1:5000/
+   
+   #Resultado Esperado
+   <!DOCTYPE html>
+   <html lang="pt">
+   <head>
+       <meta charset="UTF-8">
+       <title>Bem-vindo</title>
+   </head>
+   <body>
+       <h1>Aplicação de Filmes</h1>
+       <p>Bem-vindo à aplicação de filmes.</p>
+       <p>Acesse <a href="/movies" target="_blank">/movies</a> para ver os filmes.</p>
+       <p>Acesse <a href="/producers/intervals" target="_blank">/producers awards</a> para ver produtor com maior e menor intervalo entre dois prêmios consecutivos</p>
+   </body>   
 ```
 
 5️⃣
