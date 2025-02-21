@@ -29,7 +29,7 @@ with app.app_context():
 
     # Se o banco estiver vazio, tentar carregar os dados do CSV
     if Movie.query.count() == 0:
-        csv_status = load_movies_from_csv("movies.csv")
+        csv_status = load_movies_from_csv(os.path.join(app.root_path, "movies.csv"))
         app.config["CSV_STATUS"] = csv_status
     else:
         app.config["CSV_STATUS"] = True
@@ -57,4 +57,4 @@ def index():
 app.register_blueprint(movie_bp)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=5000)
